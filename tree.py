@@ -5,142 +5,142 @@
 # should probably add a baseclass later with linenos
 
 class Service(object) :
-	
-	def __init__(self, htmls, schemas, variables, functions, sessions) :
-		self.htmls = htmls
-		self.schemas = schemas
-		self.variables = variables
-		self.functions = functions
-		self.sessions = sessions
+    
+    def __init__(self, htmls, schemas, variables, functions, sessions) :
+        self.htmls = htmls
+        self.schemas = schemas
+        self.variables = variables
+        self.functions = functions
+        self.sessions = sessions
 
 
 class HTML(object) :
-	
-	def __init__(self, identifier, body) :
-	
-		'Body is a list of HTML elements'
-		
-		self.identifier = identifier
-		self.body = body
+    
+    def __init__(self, identifier, body) :
+    
+        'Body is a list of HTML elements'
+        
+        self.identifier = identifier
+        self.body = body
 
 
 class Tag(object) :
-	
-	'HTML opening tag.'
+    
+    'HTML opening tag.'
 
-	def __init__(self, identifier, attrs) :
-		
-		'attrs is a list of HTML attributes'
-		self.identifier = identifier
-		self.attrs = attrs
+    def __init__(self, identifier, attrs) :
+        
+        'attrs is a list of HTML attributes'
+        self.identifier = identifier
+        self.attrs = attrs
 
 class ClosingTag(object) :
-	
-	'HTML closing tag, i.e. </script>'
+    
+    'HTML closing tag, i.e. </script>'
 
-	def __init__(self, identifier) :
-		self.identifier = identifier
+    def __init__(self, identifier) :
+        self.identifier = identifier
 
 class Hole(object) :
 
-	'WIG hole, i.e. <[ var ]>'
+    'WIG hole, i.e. <[ var ]>'
 
-	def __init__(self, identifier) :
-		self.identifier = identifier
+    def __init__(self, identifier) :
+        self.identifier = identifier
 
 class Whatever(object) :
 
-	'The "whatever" production from the grammar.'
+    'The "whatever" production from the grammar.'
 
-	def __init__(self, value) :
-		'Value is the string the lexer matched'
-		self.value = value
+    def __init__(self, value) :
+        'Value is the string the lexer matched'
+        self.value = value
 
 class Meta(object) :
 
-	'HTML comment'
+    'HTML comment'
 
-	def __init__(self, value) :
-		'Value is the lexed string'
-		self.value = value
+    def __init__(self, value) :
+        'Value is the lexed string'
+        self.value = value
 
 class FormInput(object) :
 
-	def __init__(self, attrs) :
-		'attrs is a list of HTML attributes'
-		self.attrs = attrs
+    def __init__(self, attrs) :
+        'attrs is a list of HTML attributes'
+        self.attrs = attrs
 
 class FormSelect(object) :
 
-	'HTML select tag'
+    'HTML select tag'
 
-	def __init__(self, attrs, body) :
-		'Body is a list of HTML elements'
-		self.attrs = attrs
-		self.body = body
+    def __init__(self, attrs, body) :
+        'Body is a list of HTML elements'
+        self.attrs = attrs
+        self.body = body
 
 class Attribute(object) :
 
-	'HTML tag attribute'	
-	
-	def __init__(self, name, value) :
+    'HTML tag attribute'    
+    
+    def __init__(self, name, value) :
 
-		'Value can be None'
+        'Value can be None'
 
-		self.name = name
-		self.value = value
+        self.name = name
+        self.value = value
 
 class Schema(object) :
 
-	def __init__(self, identifier, fields) :
-		self.identifier = identifier
-		self.fields = fields
+    def __init__(self, identifier, fields) :
+        self.identifier = identifier
+        self.fields = fields
 
 class Field(object) :
 
-	def __init__(self, identifier, type_) :
-		self.identifier = identifier
-		self.type_ = type_
+    def __init__(self, identifier, type_) :
+        self.identifier = identifier
+        self.type_ = type_
 
 
 class Variables(object) :
 
-	'Declaration of one or more vars of same type.'
-	
-	def __init__(self, identifiers, type_) :
-		'identifiers is a list'
-		self.identifiers = identifiers
-		self.type_ = type_
+    'Declaration of one or more vars of same type.'
+    
+    def __init__(self, identifiers, type_) :
+        'identifiers is a list'
+        self.identifiers = identifiers
+        self.type_ = type_
 
 class Type(object) :
 
-	'Simple and tuple types'
+    'Simple and tuple types'
 
-	def __init__(self, type_, identifier=None) :
-		'The tuple type has an identifier which probably refers to the schema.'
-		self.type_ = type_
-		self.identifier = identifier
+    def __init__(self, type_, identifier=None) :
+        'The tuple type has an identifier which probably refers to the schema.'
+        self.type_ = type_
+        self.identifier = identifier
 
 class Function(object) :
 
-	def __init__(self, type_, identifier, args, body) :
-		self.identifier = identifier
-		self.type_ = type_
-		self.args = args
-		self.body = body
+    def __init__(self, type_, identifier, args, body) :
+        self.identifier = identifier
+        self.type_ = type_
+        self.args = args
+        self.body = body
 
 class Argument(object) :
 
-	def __init__(self, type_, identifier) :
-		self.type_ = type_
-		self.identifier = identifier
+    def __init__(self, type_, identifier) :
+        self.type_ = type_
+        self.identifier = identifier
 
 
 class Session(object) :
-	
-	def __init__(self, identifier, body) :
-		self.identifier = identifier
-		self.body = body
+    
+    def __init__(self, identifier, body) :
+        self.identifier = identifier
+        self.body = body
 
 class Show(object) :
 
