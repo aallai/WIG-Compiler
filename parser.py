@@ -23,15 +23,15 @@ def build_list(p, offset=0) :
         return [p[1]]
 
 # for possibly empty productions
-# XXX a None value denotes the empty production
+# None value denotes the empty production
 def build_empty(p) :
     if len(p) > 1 :
         return p[1]
     else :
         return None
 
-# XXX i'm adding a variables production, notes in grammar says it was removed, 
-# maybe it makes the grammar ambiguous..
+# I'm adding a variables production, this creates shift/reduce conflicts but
+# simplifies the grammar. 
 def p_service(p) :
     '''
     service : SERVICE '{' htmls schemas variables functions sessions '}'
@@ -108,7 +108,6 @@ def p_select(p) :
     p[0] = FormSelect(p[3], p[5])
 
 # skipping inputattrs since it allows arbitrary attributes anyways
-
 def p_attributes(p) :
     '''
     attributes : 
@@ -321,7 +320,8 @@ def p_return(p) :
         p[0] = Return(None)
 
 
-# enforcing use of { } in if else blocks
+# enforcing use of { } in if else blocks, resolves 
+# shift reduce conflict
 def p_if(p) :
     '''
     stm : IF '(' exp ')' compoundstm
