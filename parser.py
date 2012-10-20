@@ -341,7 +341,7 @@ def p_ifelse(p) :
 
 def p_while(p) :
     '''
-    stm : WHILE '(' exp ')' compoundstm
+    stm : WHILE '(' exp ')' stm
     '''
     p[0] = While(p[3], p[5])
 
