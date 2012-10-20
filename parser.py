@@ -107,6 +107,12 @@ def p_select(p) :
     '''
     p[0] = FormSelect(p[3], p[5])
 
+def p_emptyselect(p) :
+    '''
+    htmlbody : START_TAG SELECT attributes END_TAG START_CLOSE_TAG SELECT END_TAG
+    '''
+    p[0] = FormSelect(p[3], None)
+
 # skipping inputattrs since it allows arbitrary attributes anyways
 def p_attributes(p) :
     '''
@@ -320,17 +326,15 @@ def p_return(p) :
         p[0] = Return(None)
 
 
-# enforcing use of { } in if else blocks, resolves 
-# shift reduce conflict
 def p_if(p) :
     '''
-    stm : IF '(' exp ')' compoundstm
+    stm : IF '(' exp ')' stm
     '''
     p[0] = If(p[3], p[5])
 
 def p_ifelse(p) :
     '''
-    stm : IF '(' exp ')' compoundstm ELSE compoundstm 
+    stm : IF '(' exp ')' stm ELSE stm 
     '''
     p[0] = IfEsle(p[3], p[5], p[7])
 
